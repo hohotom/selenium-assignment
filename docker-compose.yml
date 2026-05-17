@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  selenium-chrome:
+    image: selenium/standalone-chrome:latest
+    container_name: selenium_grid
+    shm_size: 2gb
+    ports:
+      - "4444:4444" 
+      - "7900:7900" 
