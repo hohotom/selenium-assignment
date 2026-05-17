@@ -69,7 +69,14 @@ public class HomePage extends BasePage {
 
         Actions actions = new Actions(driver);
         actions.moveToElement(firstCategoryMenuLink).perform();
-        System.out.println("Success: Hovered over the first category menu link.");
+        
+        try { Thread.sleep(5000); } catch (InterruptedException e) {}
+
+        String textDecoration = firstCategoryMenuLink.getCssValue("text-decoration");
+        
+        // A TestNG ellenőrzi, hogy a kapott CSS értékben szerepel-e az 'underline' (aláhúzás) szó
+        org.testng.Assert.assertTrue(textDecoration.contains("underline"), 
+            "Error: The hover action failed, the category text was not underlined!");
     }
 
     public void scrollToFooter() {
